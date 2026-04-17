@@ -310,8 +310,8 @@ def get_hls_stream_indices(content_url: str, resolution_index: int):
     if not videos:
         return None, audio_idx
 
-    # Sort videos by resolution (pixels); lowest → highest
-    videos.sort(key=lambda x: x[1])
+    # Sort videos by resolution (pixels); highest → lowest (index 0 = best quality)
+    videos.sort(key=lambda x: x[1], reverse=True)
 
     # Clamp resolution_index
     if resolution_index < 0:
